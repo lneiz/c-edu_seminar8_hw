@@ -120,61 +120,105 @@
 
 //Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 
-int[,] CreateRandom2dArray(int rows, int cols)
-{
-    int[,] array = new int[rows,cols];
+// int[,] CreateRandom2dArray(int rows, int cols)
+// {
+//     int[,] array = new int[rows,cols];
 
-    for(int i = 0; i < rows; i++)
+//     for(int i = 0; i < rows; i++)
+//     {
+//         for(int j = 0; j < cols; j++)
+//         {
+//             array[i,j] = new Random().Next(0, 8);
+//         }
+//     }
+
+//     return array;
+// }
+
+// void ShowArray(int[,] array)
+// {
+//     for(int i = 0; i < array.GetLength(0); i++)
+//     {
+//         for(int j = 0; j < array.GetLength(1); j++)
+//         {
+//             Console.Write(array[i,j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+//     Console.WriteLine();
+// }
+
+// int[,] MatrixMulti(int[,] arrayA, int[,] arrayB)
+// {
+//     int[,] arrayMulti = new int[arrayA.GetLength(0), arrayB.GetLength(1)];
+
+//     for(int i = 0; i < arrayA.GetLength(0); i++)
+//     {
+//         for(int j = 0; j < arrayB.GetLength(1); j++)
+//         {
+//             for(int k = 0; k < arrayA.GetLength(1); k++)
+//             {
+//                 arrayMulti[i,j] += arrayA[i,k] * arrayB[k,j];
+//             }
+//         }
+//     }
+//     return arrayMulti;
+// }
+
+//     Console.Write("Количество строк массива A? ");
+//     int rowsA = Convert.ToInt32(Console.ReadLine());
+//     Console.Write("Количество столбцов массива A? ");
+//     int colsA = Convert.ToInt32(Console.ReadLine());
+//     Console.Write("Количество столбцов массива B? ");
+//     int colsB = Convert.ToInt32(Console.ReadLine());
+
+//     int[,] arrayA = CreateRandom2dArray(rowsA, colsA);
+//     int[,] arrayB = CreateRandom2dArray(colsA, colsB);
+
+//     ShowArray(arrayA);
+//     ShowArray(arrayB);
+//     ShowArray(MatrixMulti(arrayA, arrayB));
+
+//Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
+//Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+
+int[,,] CreateRandom2dArray()
+{
+    Console.Write("Минимаьное значение массива? ");
+    int minValue = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Максимальное значение массива? ");
+    int maxValue = Convert.ToInt32(Console.ReadLine());
+
+    int[,,] array = new int[2, 2, 2];
+
+    for(int i = 0; i < 2; i++)
     {
-        for(int j = 0; j < cols; j++)
+        for(int j = 0; j < 2; j++)
         {
-            array[i,j] = new Random().Next(0, 8);
+            for(int k = 0; k < 2; k++)
+            {
+                array[i,j,k] = new Random().Next(minValue, maxValue);
+            }
         }
     }
 
     return array;
 }
 
-void ShowArray(int[,] array)
+void Show3dArray(int[,,] array)
 {
     for(int i = 0; i < array.GetLength(0); i++)
     {
         for(int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write(array[i,j] + " ");
-        }
-        Console.WriteLine();
-    }
-    Console.WriteLine();
-}
-
-int[,] MatrixMulti(int[,] arrayA, int[,] arrayB)
-{
-    int[,] arrayMulti = new int[arrayA.GetLength(0), arrayB.GetLength(1)];
-
-    for(int i = 0; i < arrayA.GetLength(0); i++)
-    {
-        for(int j = 0; j < arrayB.GetLength(1); j++)
-        {
-            for(int k = 0; k < arrayA.GetLength(1); k++)
+            for(int k = 0; k < array.GetLength(2); k++)
             {
-                arrayMulti[i,j] += arrayA[i,k] * arrayB[k,j];
+                Console.Write(array[i,j,k] + " ");
+                Console.Write("(" + i + " " + j + " " + k + ") ");
             }
+            Console.WriteLine();
         }
     }
-    return arrayMulti;
 }
 
-    Console.Write("Количество строк массива A? ");
-    int rowsA = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Количество столбцов массива A? ");
-    int colsA = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Количество столбцов массива B? ");
-    int colsB = Convert.ToInt32(Console.ReadLine());
-
-    int[,] arrayA = CreateRandom2dArray(rowsA, colsA);
-    int[,] arrayB = CreateRandom2dArray(colsA, colsB);
-
-    ShowArray(arrayA);
-    ShowArray(arrayB);
-    ShowArray(MatrixMulti(arrayA, arrayB));
+Show3dArray(CreateRandom2dArray());
