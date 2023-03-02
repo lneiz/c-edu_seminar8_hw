@@ -188,14 +188,38 @@
 //Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
 //Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
 
-int[,,] CreateRandom2dArray()
+int[] UniqueCount(int count)
 {
     Console.Write("Минимаьное значение массива? ");
     int minValue = Convert.ToInt32(Console.ReadLine());
     Console.Write("Максимальное значение массива? ");
     int maxValue = Convert.ToInt32(Console.ReadLine());
 
+    if(maxValue - minValue <= count)
+    {
+        maxValue += count - (maxValue - minValue) + 1;
+    }
+
+    int[] array = new int[count];
+    int j = 0;
+
+    for(int i = 0; i < count; i++)
+    {
+        do
+        {
+            j = new Random().Next(minValue, maxValue);
+        }
+        while(Array.IndexOf(array, j) != -1);
+        
+        array[i] = j;
+    }
+    return array;
+}
+
+int[,,] CreateRandom2dArray(int[] uniqueArray)
+{
     int[,,] array = new int[2, 2, 2];
+    int count = 0;
 
     for(int i = 0; i < 2; i++)
     {
@@ -203,11 +227,11 @@ int[,,] CreateRandom2dArray()
         {
             for(int k = 0; k < 2; k++)
             {
-                array[i,j,k] = new Random().Next(minValue, maxValue);
+                array[i,j,k] = uniqueArray[count];
+                count++;
             }
         }
     }
-
     return array;
 }
 
@@ -227,4 +251,6 @@ void Show3dArray(int[,,] array)
     }
 }
 
-Show3dArray(CreateRandom2dArray());
+Show3dArray(CreateRandom2dArray(UniqueCount(8)));
+
+
