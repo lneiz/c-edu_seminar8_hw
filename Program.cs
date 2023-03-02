@@ -122,13 +122,19 @@
 
 // int[,] CreateRandom2dArray(int rows, int cols)
 // {
+
+//     Console.Write("Минимаьное значение массива? ");
+//     int minValue = Convert.ToInt32(Console.ReadLine());
+//     Console.Write("Максимальное значение массива? ");
+//     int maxValue = Convert.ToInt32(Console.ReadLine());
+
 //     int[,] array = new int[rows,cols];
 
 //     for(int i = 0; i < rows; i++)
 //     {
 //         for(int j = 0; j < cols; j++)
 //         {
-//             array[i,j] = new Random().Next(0, 8);
+//             array[i,j] = new Random().Next(minValue, maxValue);
 //         }
 //     }
 
